@@ -2,6 +2,7 @@ package hudson.cli;
 
 import edu.umd.cs.findbugs.annotations.CheckForNull;
 import edu.umd.cs.findbugs.annotations.NonNull;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hudson.AbortException;
 import hudson.ExtensionList;
 import hudson.ExtensionPoint;
@@ -22,6 +23,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jenkins.model.Jenkins;
+import jenkins.util.SystemProperties;
 import org.acegisecurity.Authentication;
 import org.apache.commons.discovery.ResourceClassIterator;
 import org.apache.commons.discovery.ResourceNameIterator;
@@ -33,6 +35,7 @@ import org.jvnet.tiger_types.Types;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.ParserProperties;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
@@ -41,6 +44,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 @LegacyInstancesAreScopedToHudson
 public abstract class CLICommand implements ExtensionPoint, Cloneable {
+  @Restricted({org.kohsuke.accmod.restrictions.NoExternalUse.class})
+  @SuppressFBWarnings(value = {"MS_SHOULD_BE_FINAL"}, justification = "Accessible via System Groovy Scripts")
+  public static boolean ALLOW_AT_SYNTAX = SystemProperties.getBoolean(CLICommand.class.getName() + ".allowAtSyntax");
+  
   public PrintStream stdout;
   
   public PrintStream stderr;
@@ -134,7 +141,10 @@ public abstract class CLICommand implements ExtensionPoint, Cloneable {
     this.stderr.println("ERROR: " + errorMessage);
   }
   
-  protected CmdLineParser getCmdLineParser() { return new CmdLineParser(this); }
+  protected CmdLineParser getCmdLineParser() {
+    ParserProperties properties = ParserProperties.defaults().withAtSyntax(ALLOW_AT_SYNTAX);
+    return new CmdLineParser(this, properties);
+  }
   
   @Deprecated
   public Channel checkChannel() throws AbortException { throw new AbortException("This command is requesting the -remoting mode which is no longer supported. See https://www.jenkins.io/redirect/cli-command-requires-channel"); }

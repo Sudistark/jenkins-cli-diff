@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Created-By: Maven JAR Plugin 3.3.0
 Build-Jdk-Spec: 11
-Class-Path: cli-2.426.2.jar remoting-3160.vd76b_9ddd10cc.jar args4j-2.33
+Class-Path: cli-2.426.3.jar remoting-3160.vd76b_9ddd10cc.jar args4j-2.33
  .jar spotbugs-annotations-4.7.3.jar guava-32.1.2-jre.jar failureaccess-
  1.0.1.jar listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.ja
  r jsr305-3.0.1.jar guice-6.0.0.jar javax.inject-1.jar jakarta.inject-ap
@@ -17,7 +17,7 @@ Class-Path: cli-2.426.2.jar remoting-3160.vd76b_9ddd10cc.jar args4j-2.33
  .24.0.jar groovy-all-2.4.21.jar jbcrypt-1.0.0.jar jansi-1.11.jar annota
  tion-indexer-1.17.jar commons-jexl-1.1-jenkins-20111212.jar crypto-util
  -1.9.jar memory-monitor-1.12.jar symbol-annotation-1.24.jar task-reacto
- r-1.8.jar version-number-1.11.jar websocket-spi-2.426.2.jar jfreechart-
+ r-1.8.jar version-number-1.11.jar websocket-spi-2.426.3.jar jfreechart-
  1.0.19.jar jcommon-1.0.23.jar commons-jelly-tags-define-1.1-jenkins-202
  30713.jar localizer-1.31.jar robust-http-client-1.2.jar winp-1.30.jar a
  ccess-modifier-annotation-1.33.jar windows-package-checker-1.2.jar j-in
@@ -37,7 +37,7 @@ Class-Path: cli-2.426.2.jar remoting-3160.vd76b_9ddd10cc.jar args4j-2.33
 Specification-Title: Jenkins core
 Specification-Version: 2.426
 Implementation-Title: Jenkins core
-Implementation-Version: 2.426.2
+Implementation-Version: 2.426.3
 Main-Class: hudson.Main
-Implementation-Build: 3eb70099423f93c9de29fca3c6b5b6efd2847ad0
+Implementation-Build: 9ed5f66f62ac5b116357d2f58cb37ca3161c5b60
 

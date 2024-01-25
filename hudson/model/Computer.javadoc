@@ -1,4 +1,4 @@
-#Wed Dec 13 17:01:27 UTC 2023
+#Mon Jan 22 16:50:37 UTC 2024
 getOneOffExecutors=\ Gets the read-only snapshot view of all {@link OneOffExecutor}s.\n
 getOfflineCause=\ If the computer was offline (either temporarily or not),\n this method will return the cause.\n\n @return\n      null if the system was put offline without given a cause.\n
 isJnlpAgent=\ Returns true if this computer is supposed to be launched via inbound protocol.\n @deprecated since 2008-05-18.\n     See {@linkplain \#isLaunchSupported()} and {@linkplain ComputerLauncher}\n

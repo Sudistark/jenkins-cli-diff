@@ -1,4 +1,4 @@
-#Wed Dec 13 17:01:27 UTC 2023
+#Mon Jan 22 16:50:37 UTC 2024
 component=\ The name of the affected component.\n <ul>\n   <li>If type is 'core', this is 'core' by convention.\n   <li>If type is 'plugin', this is the artifactId of the affected plugin\n </ul>\n
 versionRanges=\ A list of named version ranges specifying which versions of the named component this warning applies to.\n\n If this list is empty, all versions of the component are considered to be affected by this warning.\n
 id=\ The globally unique ID of this warning.\n\n <p>This is typically the CVE identifier or SECURITY issue (Jenkins project);\n possibly with a unique suffix (e.g. artifactId) if either applies to multiple components.</p>\n

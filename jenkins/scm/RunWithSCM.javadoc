@@ -1,2 +1,2 @@
-#Wed Dec 13 17:01:27 UTC 2023
+#Mon Jan 22 16:50:37 UTC 2024
 getCulprits=\ List of users who committed a change since the last non-broken build till now.\n\n <p>\n This list at least always include people who made changes in this build, but\n if the previous build was a failure it also includes the culprit list from there.\n\n <p>\n Missing {@link User}s will be created on-demand.\n\n @return\n      can be empty but never null.\n

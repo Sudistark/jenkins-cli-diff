@@ -112,7 +112,7 @@ public abstract class Cloud extends Actionable implements ExtensionPoint, Descri
       throw new Descriptor.FormException(Messages.CloudSet_CloudAlreadyExists(proposedName), "name"); 
     j.clouds.replace(this, result);
     j.save();
-    return FormApply.success(".");
+    return FormApply.success("../" + result.name + "/");
   }
   
   public Cloud reconfigure(@NonNull StaplerRequest req, JSONObject form) throws Descriptor.FormException {

@@ -148,8 +148,8 @@ public abstract class AbstractLazyLoadRunMap<R> extends AbstractMap<Integer, R> 
   
   @CheckForNull
   public R search(int n, Direction d) {
-    ListIterator<Integer> iterator;
     Iterator iterator1;
+    ListIterator<Integer> iterator;
     switch (null.$SwitchMap$jenkins$model$lazy$AbstractLazyLoadRunMap$Direction[d.ordinal()]) {
       case 1:
         return (R)getByNumber(n);

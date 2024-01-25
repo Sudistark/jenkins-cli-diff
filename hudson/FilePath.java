@@ -391,10 +391,13 @@ public final class FilePath implements SerializableOnlyOverRemoting {
       URLConnection con;
       FilePath timestamp = child(".timestamp");
       long lastModified = timestamp.lastModified();
+      String etag = timestamp.exists() ? Util.fixEmptyAndTrim(timestamp.readToString()) : null;
       try {
         con = ProxyConfiguration.open(archive);
         if (lastModified != 0L)
           con.setIfModifiedSince(lastModified); 
+        if (etag != null)
+          con.setRequestProperty("If-None-Match", etag); 
         con.connect();
       } catch (IOException x) {
         if (exists()) {
@@ -415,7 +418,7 @@ public final class FilePath implements SerializableOnlyOverRemoting {
           listener.getLogger().println("Skipping installation of " + archive + " to " + this.remote + " due to too many redirects.");
           return false;
         } 
-        if (lastModified != 0L) {
+        if (lastModified != 0L || etag != null) {
           if (responseCode == 304)
             return false; 
           if (responseCode != 200) {
@@ -425,7 +428,10 @@ public final class FilePath implements SerializableOnlyOverRemoting {
         } 
       } 
       long sourceTimestamp = con.getLastModified();
+      String resultEtag = Util.fixEmptyAndTrim(con.getHeaderField("ETag"));
       if (exists()) {
+        if (equalETags(etag, resultEtag))
+          return false; 
         if (lastModified != 0L && sourceTimestamp == lastModified)
           return false; 
         deleteContents();
@@ -436,6 +442,8 @@ public final class FilePath implements SerializableOnlyOverRemoting {
       if (isRemote())
         try {
           act(new Unpack(archive));
+          if (resultEtag != null && !equalETags(etag, resultEtag))
+            timestamp.write(resultEtag, "UTF-8"); 
           timestamp.touch(sourceTimestamp);
           return true;
         } catch (IOException x) {
@@ -453,11 +461,23 @@ public final class FilePath implements SerializableOnlyOverRemoting {
         throw new IOException(String.format("Failed to unpack %s (%d bytes read of total %d)", new Object[] { archive, 
                 Long.valueOf(cis.getByteCount()), Integer.valueOf(con.getContentLength()) }), e);
       } 
+      if (resultEtag != null && !equalETags(etag, resultEtag))
+        timestamp.write(resultEtag, "UTF-8"); 
       timestamp.touch(sourceTimestamp);
       return true;
     } catch (IOException e) {
       throw new IOException("Failed to install " + archive + " to " + this.remote, e);
     } 
+  }
+  
+  private boolean equalETags(String etag1, String etag2) {
+    if (etag1 == null || etag2 == null)
+      return false; 
+    if (etag1.equals(etag2))
+      return true; 
+    String opaqueTag1 = etag1.startsWith("W/") ? etag1.substring(2) : etag1;
+    String opaqueTag2 = etag2.startsWith("W/") ? etag2.substring(2) : etag2;
+    return opaqueTag1.equals(opaqueTag2);
   }
   
   public void copyFrom(URL url) throws IOException, InterruptedException {

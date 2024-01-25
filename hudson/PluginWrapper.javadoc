@@ -1,4 +1,4 @@
-#Wed Dec 13 17:01:27 UTC 2023
+#Mon Jan 22 16:50:37 UTC 2024
 getVersion=\ Returns the version number of this plugin\n
 isBundled=\ Is this plugin bundled in the WAR?\n Normally false as noted in {@link PluginManager\#loadBundledPlugins}\:\n this does <em>not</em> apply to \u201Cdetached\u201D plugins.\n
 getDependencies=\ Gets all dependencies of this plugin on other plugins.\n Note that the list will <em>usually</em> include the members of {@link \#getOptionalDependencies}\n (missing optional dependencies will however be omitted).\n

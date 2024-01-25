@@ -1,4 +1,4 @@
-#Wed Dec 13 17:01:27 UTC 2023
+#Mon Jan 22 16:50:37 UTC 2024
 getAffectedPaths=\ Returns a set of paths in the workspace that was\n affected by this change.\n\n <p>\n Contains string like 'foo/bar/zot'. No leading/trailing '/',\n and separator must be normalized to '/'.\n\n @return never null.\n
 getMsg=\ Gets the "commit message".\n\n <p>\n The exact definition depends on the individual SCM implementation.\n\n @return\n      Can be empty but never null.\n
 getAuthor=\ The user who made this change.\n\n @return\n      never null.\n

@@ -7,13 +7,13 @@ import org.kohsuke.stapler.jelly.groovy.TypedTagLibrary;
 
 @TagLibraryUri("/hudson/security/HudsonPrivateSecurityRealm")
 public interface HudsonPrivateSecurityRealmTagLib extends TypedTagLibrary {
-  void addUser(Map paramMap, Closure paramClosure);
+  void config(Map paramMap, Closure paramClosure);
   
-  void addUser(Closure paramClosure);
+  void config(Closure paramClosure);
   
-  void addUser(Map paramMap);
+  void config(Map paramMap);
   
-  void addUser();
+  void config();
   
   void _entryForm(Map paramMap, Closure paramClosure);
   
@@ -23,37 +23,13 @@ public interface HudsonPrivateSecurityRealmTagLib extends TypedTagLibrary {
   
   void _entryForm();
   
-  void signup(Map paramMap, Closure paramClosure);
+  void success(Map paramMap, Closure paramClosure);
   
-  void signup(Closure paramClosure);
+  void success(Closure paramClosure);
   
-  void signup(Map paramMap);
+  void success(Map paramMap);
   
-  void signup();
-  
-  void loginLink(Map paramMap, Closure paramClosure);
-  
-  void loginLink(Closure paramClosure);
-  
-  void loginLink(Map paramMap);
-  
-  void loginLink();
-  
-  void firstUser(Map paramMap, Closure paramClosure);
-  
-  void firstUser(Closure paramClosure);
-  
-  void firstUser(Map paramMap);
-  
-  void firstUser();
-  
-  void _entryFormPage(Map paramMap, Closure paramClosure);
-  
-  void _entryFormPage(Closure paramClosure);
-  
-  void _entryFormPage(Map paramMap);
-  
-  void _entryFormPage();
+  void success();
   
   void index(Map paramMap, Closure paramClosure);
   
@@ -63,6 +39,38 @@ public interface HudsonPrivateSecurityRealmTagLib extends TypedTagLibrary {
   
   void index();
   
+  void _entryFormPage(Map paramMap, Closure paramClosure);
+  
+  void _entryFormPage(Closure paramClosure);
+  
+  void _entryFormPage(Map paramMap);
+  
+  void _entryFormPage();
+  
+  void addUser(Map paramMap, Closure paramClosure);
+  
+  void addUser(Closure paramClosure);
+  
+  void addUser(Map paramMap);
+  
+  void addUser();
+  
+  void loginLink(Map paramMap, Closure paramClosure);
+  
+  void loginLink(Closure paramClosure);
+  
+  void loginLink(Map paramMap);
+  
+  void loginLink();
+  
+  void signup(Map paramMap, Closure paramClosure);
+  
+  void signup(Closure paramClosure);
+  
+  void signup(Map paramMap);
+  
+  void signup();
+  
   void signupWithFederatedIdentity(Map paramMap, Closure paramClosure);
   
   void signupWithFederatedIdentity(Closure paramClosure);
@@ -71,19 +79,11 @@ public interface HudsonPrivateSecurityRealmTagLib extends TypedTagLibrary {
   
   void signupWithFederatedIdentity();
   
-  void success(Map paramMap, Closure paramClosure);
+  void firstUser(Map paramMap, Closure paramClosure);
   
-  void success(Closure paramClosure);
+  void firstUser(Closure paramClosure);
   
-  void success(Map paramMap);
+  void firstUser(Map paramMap);
   
-  void success();
-  
-  void config(Map paramMap, Closure paramClosure);
-  
-  void config(Closure paramClosure);
-  
-  void config(Map paramMap);
-  
-  void config();
+  void firstUser();
 }

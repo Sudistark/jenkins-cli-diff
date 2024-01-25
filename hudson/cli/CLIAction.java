@@ -6,11 +6,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import jenkins.model.Jenkins;
 import jenkins.util.FullDuplexHttpService;
+import jenkins.util.SystemProperties;
 import jenkins.websocket.WebSockets;
+import org.apache.commons.lang.StringUtils;
 import org.jenkinsci.Symbol;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.stapler.HttpResponse;
@@ -26,6 +29,8 @@ import org.springframework.security.core.Authentication;
 @Restricted({org.kohsuke.accmod.restrictions.NoExternalUse.class})
 public class CLIAction implements UnprotectedRootAction, StaplerProxy {
   private static final Logger LOGGER = Logger.getLogger(CLIAction.class.getName());
+  
+  static Boolean ALLOW_WEBSOCKET = SystemProperties.optBoolean(CLIAction.class.getName() + ".ALLOW_WEBSOCKET");
   
   private final Map<UUID, FullDuplexHttpService> duplexServices = new HashMap();
   
@@ -50,9 +55,19 @@ public class CLIAction implements UnprotectedRootAction, StaplerProxy {
   
   public boolean isWebSocketSupported() { return WebSockets.isSupported(); }
   
-  public HttpResponse doWs() {
+  public HttpResponse doWs(StaplerRequest req) {
     if (!WebSockets.isSupported())
       return HttpResponses.notFound(); 
+    if (ALLOW_WEBSOCKET == null) {
+      String actualOrigin = req.getHeader("Origin");
+      String expectedOrigin = StringUtils.removeEnd(StringUtils.removeEnd(Jenkins.get().getRootUrlFromRequest(), "/"), req.getContextPath());
+      if (actualOrigin == null || !actualOrigin.equals(expectedOrigin)) {
+        LOGGER.log(Level.FINE, () -> "Rejecting origin: " + actualOrigin + "; expected was from request: " + expectedOrigin);
+        return HttpResponses.forbidden();
+      } 
+    } else if (!ALLOW_WEBSOCKET.booleanValue()) {
+      return HttpResponses.forbidden();
+    } 
     Authentication authentication = Jenkins.getAuthentication2();
     return WebSockets.upgrade(new Object(this, authentication));
   }

@@ -1,4 +1,4 @@
-#Wed Dec 13 17:01:27 UTC 2023
+#Mon Jan 22 16:50:37 UTC 2024
 getArtifacts=\ Gets the artifacts (relative to {@link \#getArtifactsDir()}.\n @return The list can be empty but never null\n
 getBuildFingerprints=\ get the fingerprints associated with this build\n\n @return The fingerprints\n
 getExecutor=\ Gets the {@link Executor} building this job, if it's being built.\n Otherwise null.\n\n This method looks for {@link Executor} who's {@linkplain Executor\#getCurrentExecutable() assigned to this build},\n and because of that this might not be necessarily in sync with the return value of {@link \#isBuilding()} &mdash;\n an executor holds on to {@link Run} some more time even after the build is finished (for example to\n perform {@linkplain Run.State\#POST_PRODUCTION post-production processing}.)\n @see Executor\#of\n
