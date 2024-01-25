@@ -1,0 +1,1 @@
+package hudson.model.labels;

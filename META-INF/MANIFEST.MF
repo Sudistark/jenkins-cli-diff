@@ -1,0 +1,43 @@
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.3.0
+Build-Jdk-Spec: 11
+Class-Path: cli-2.426.2.jar remoting-3160.vd76b_9ddd10cc.jar args4j-2.33
+ .jar spotbugs-annotations-4.7.3.jar guava-32.1.2-jre.jar failureaccess-
+ 1.0.1.jar listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.ja
+ r jsr305-3.0.1.jar guice-6.0.0.jar javax.inject-1.jar jakarta.inject-ap
+ i-2.0.1.jar bridge-method-annotation-1.29.jar jzlib-1.1.3-kohsuke-1.jar
+  embedded_su4j-1.1.jar txw2-20110809.jar relaxngDatatype-20020414.jar x
+ stream-1.4.20.jar mxparser-1.2.2.jar commons-beanutils-1.9.4.jar common
+ s-codec-1.16.0.jar commons-collections-3.2.2.jar commons-fileupload-1.5
+ .jar commons-io-2.13.0.jar commons-jelly-tags-fmt-1.0.jar commons-jelly
+ -tags-xml-1.1.jar commons-lang-2.6.jar jenkins-stapler-support-1.1.jar 
+ jakarta.servlet.jsp.jstl-api-1.2.7.jar jaxen-2.0.0.jar jline-2.14.6.jar
+  jna-5.13.0.jar sezpoz-1.13.jar jcip-annotations-1.0.jar antlr4-runtime
+ -4.13.1.jar ant-1.10.14.jar ant-launcher-1.10.14.jar commons-compress-1
+ .24.0.jar groovy-all-2.4.21.jar jbcrypt-1.0.0.jar jansi-1.11.jar annota
+ tion-indexer-1.17.jar commons-jexl-1.1-jenkins-20111212.jar crypto-util
+ -1.9.jar memory-monitor-1.12.jar symbol-annotation-1.24.jar task-reacto
+ r-1.8.jar version-number-1.11.jar websocket-spi-2.426.2.jar jfreechart-
+ 1.0.19.jar jcommon-1.0.23.jar commons-jelly-tags-define-1.1-jenkins-202
+ 30713.jar localizer-1.31.jar robust-http-client-1.2.jar winp-1.30.jar a
+ ccess-modifier-annotation-1.33.jar windows-package-checker-1.2.jar j-in
+ terop-2.0.8-kohsuke-1.jar j-interopdeps-2.0.8-kohsuke-1.jar jcifs-1.3.1
+ 8-kohsuke-1.jar metainf-services-1.11.jar json-lib-2.4-jenkins-3.jar ez
+ morph-1.0.6.jar stapler-1814.vdc9dd5217ee2.jar commons-discovery-0.5.ja
+ r jakarta.annotation-api-2.1.1.jar javax.annotation-api-1.3.2.jar tiger
+ -types-2.2.jar stapler-adjunct-codemirror-1.3.jar stapler-adjunct-timel
+ ine-1.5.jar stapler-groovy-1814.vdc9dd5217ee2.jar stapler-jelly-1814.vd
+ c9dd5217ee2.jar dom4j-2.1.4.jar commons-jelly-1.1-jenkins-20230713.jar 
+ asm-9.6.jar asm-analysis-9.6.jar asm-commons-9.6.jar asm-tree-9.6.jar a
+ sm-util-9.6.jar jcl-over-slf4j-2.0.9.jar slf4j-api-2.0.9.jar log4j-over
+ -slf4j-2.0.9.jar spring-security-web-5.8.7.jar spring-security-core-5.8
+ .7.jar spring-security-crypto-5.8.7.jar spring-core-5.3.29.jar spring-a
+ op-5.3.29.jar spring-beans-5.3.29.jar spring-context-5.3.29.jar spring-
+ expression-5.3.29.jar spring-web-5.3.29.jar xpp3-1.1.4c.jar
+Specification-Title: Jenkins core
+Specification-Version: 2.426
+Implementation-Title: Jenkins core
+Implementation-Version: 2.426.2
+Main-Class: hudson.Main
+Implementation-Build: 3eb70099423f93c9de29fca3c6b5b6efd2847ad0
+

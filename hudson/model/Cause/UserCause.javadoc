@@ -1,0 +1,2 @@
+#Wed Dec 13 17:01:27 UTC 2023
+getUserName=\ Gets user display name when possible.\n @return User display name.\n         If the User does not exist, returns its ID.\n

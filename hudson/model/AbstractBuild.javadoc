@@ -1,0 +1,3 @@
+#Wed Dec 13 17:01:27 UTC 2023
+getBuiltOnStr=\ Returns the name of the agent it was built on; null or "" if built by the built-in node.\n (null happens when we read old record that didn't have this information.)\n
+getChangeSet=\ Gets the changes incorporated into this build.\n\n @return never null.\n

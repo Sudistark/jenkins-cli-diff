@@ -1,0 +1,3 @@
+hudson.model.Run
+jenkins.model.Jenkins
+jenkins.model.ParameterizedJobMixIn$ParameterizedJob

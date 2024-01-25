@@ -1,0 +1,16 @@
+#Wed Dec 13 17:01:27 UTC 2023
+getVersion=\ Returns the version number of this plugin\n
+isBundled=\ Is this plugin bundled in the WAR?\n Normally false as noted in {@link PluginManager\#loadBundledPlugins}\:\n this does <em>not</em> apply to \u201Cdetached\u201D plugins.\n
+getDependencies=\ Gets all dependencies of this plugin on other plugins.\n Note that the list will <em>usually</em> include the members of {@link \#getOptionalDependencies}\n (missing optional dependencies will however be omitted).\n
+isDetached=\ Same as {@link DetachedPluginsUtil\#isDetachedPlugin}.\n @since 2.185\n
+supportsDynamicLoad=\ Does this plugin supports dynamic loading?\n
+getRequiredCoreVersion=\ Returns the required Jenkins core version of this plugin.\n @return the required Jenkins core version of this plugin.\n @since 2.16\n
+isActive=\ Returns true if this plugin is enabled for this session.\n
+getLongName=\ Returns a one-line descriptive name of this plugin.\n\n @deprecated For most purposes, use {@link \#getDisplayName()}.\n
+getUrl=\ Gets the URL that shows more information about this plugin.\n @return\n      null if this information is unavailable.\n @since 1.283\n
+hasUpdate=\ Returns true if this plugin has update in the update center.\n\n <p>\n This method is conservative in the sense that if the version number is incomprehensible,\n it always returns false.\n
+getBackupVersion=\ returns the version of the backed up plugin,\n or null if there's no back up.\n
+isDeleted=\ Returns true if this plugin is deleted.\n\n The plugin continues to function in this session, but in the next session it'll disappear.\n
+isEnabled=\ If true, the plugin is going to be activated next time\n Jenkins runs.\n
+getShortName=\ Returns the short name suitable for URL.\n
+isDowngradable=\ returns true if backup of previous version of plugin exists\n

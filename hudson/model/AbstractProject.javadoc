@@ -1,0 +1,3 @@
+#Wed Dec 13 17:01:27 UTC 2023
+isConcurrentBuild=\ Does this project perform concurrent builds?\n @since 1.319\n
+getAssignedLabelString=\ Gets the textual representation of the assigned label as it was entered by the user.\n

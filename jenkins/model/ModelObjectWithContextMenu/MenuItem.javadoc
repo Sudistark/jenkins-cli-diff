@@ -1,0 +1,9 @@
+#Wed Dec 13 17:01:27 UTC 2023
+subMenu=\ If this is a submenu, definition of subitems.\n
+requiresConfirmation=\ True to require confirmation after a click.\n @since 1.512\n
+post=\ True to make a POST request rather than GET.\n @since 1.504\n
+displayName=\ Human readable caption of the menu item. Do not use HTML.\n
+icon=\ Optional URL to the icon image. Rendered as 24x24.\n
+type=\ The type of menu item\n @since 2.340\n
+getBadge=\ The badge to display for the context menu item\n @since 2.401\n
+url=\ Target of the link.\n\n This can start with '/', but it must not be a relative URL, since\n you cannot really tell which page this context menu is used.\n

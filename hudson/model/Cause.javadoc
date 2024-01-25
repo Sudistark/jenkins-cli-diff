@@ -1,0 +1,2 @@
+#Wed Dec 13 17:01:27 UTC 2023
+getShortDescription=\ One-line human-readable text of the cause.\n\n Historically, this method's return value was used to render HTML on the UI as well.\n Since Jenkins 2.315 and 2.303.2, the return value is interpreted as text.\n To have rich HTML output on the UI, provide a custom {@code description.jelly} view for your subclass.\n See <a href\="https\://www.jenkins.io/doc/developer/security/xss-prevention/Cause-getShortDescription/">the documentation</a>.\n

@@ -1,0 +1,4 @@
+#Wed Dec 13 17:01:27 UTC 2023
+sec10=\ Updated every 10 seconds. Keep data up to 6 hours.\n
+min=\ Updated every 1 min. Keep data up to 2 days.\n
+hour=\ Updated every 1 hour. Keep data up to 8 weeks.\n

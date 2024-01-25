@@ -1,0 +1,8 @@
+#Wed Dec 13 17:01:27 UTC 2023
+getIdleExecutors=\ The total number of executors that are currently on-line and idle. This includes executors that are\n not accepting tasks.\n
+getDefinedExecutors=\ The total number of executors that Jenkins currently knows, this includes all off-line agents.\n
+getAvailableExecutors=\ The total number of executors that are currently on-line, idle and accepting tasks.\n
+getBusyExecutors=\ The total number of executors that are currently busy running jobs.\n
+getOnlineExecutors=\ The total number of executors that are currently on-line.\n
+getQueueLength=\ The number of items in the queue.\n
+getConnectingExecutors=\ The total number of executors that are currently in the process of connecting to Jenkins.\n

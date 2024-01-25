@@ -1,0 +1,117 @@
+<!--
+The MIT License
+
+Copyright (c) 2004-2009, Sun Microsystems, Inc., Kohsuke Kawaguchi, Seiji Sogabe
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
+  <j:choose>
+    <j:when test="${!it.launcher.webSocket and app.slaveAgentPort == -1}">
+      <div class="error">
+        ${%slaveAgentPort.disabled}
+        <l:isAdmin><a href="${rootURL}/configureSecurity">${%configure.link.text}</a>.</l:isAdmin>
+      </div>
+    </j:when>
+    <j:when test="${it.offline and !it.temporarilyOffline}">
+      <j:set var="jenkinsURL" value="${h.inferHudsonURL(request)}"/>
+      <j:set var="copy_agent_jar_unix" value="curl -sO ${jenkinsURL}jnlpJars/agent.jar" />
+      <j:set var="copy_agent_jar_windows" value="curl.exe -sO ${jenkinsURL}jnlpJars/agent.jar" />
+      <j:set var="copy_java_cmd" value="java -jar agent.jar -jnlpUrl ${jenkinsURL}${it.url}jenkins-agent.jnlp ${it.launcher.getWorkDirOptions(it)}" />
+      <j:if test="${h.hasPermission(it, it.CONNECT)}">
+          <j:choose>
+            <j:when test="${it.ACL.hasPermission(app.ANONYMOUS, it.CONNECT)}">
+                <h3>
+                  ${%slaveAgent.cli.run} (Unix)
+                  <l:copyButton text="${copy_agent_jar_unix};${copy_java_cmd}"/>
+                </h3>
+<pre>
+${copy_agent_jar_unix}
+${copy_java_cmd}
+</pre>
+
+                <h3>
+                  ${%slaveAgent.cli.run} (Windows)
+                  <l:copyButton text="${copy_agent_jar_windows} &amp; ${copy_java_cmd}"/>
+                </h3>
+<pre>
+${copy_agent_jar_windows}
+${copy_java_cmd}
+</pre>
+
+            </j:when>
+            <j:otherwise>
+                <j:set var="copy_java_cmd_secret" value="java -jar agent.jar -jnlpUrl ${jenkinsURL}${it.url}jenkins-agent.jnlp -secret ${it.jnlpMac} ${it.launcher.getWorkDirOptions(it)}" />
+                <h3>
+                  ${%slaveAgent.cli.run} (Unix)
+                  <l:copyButton text="${copy_agent_jar_unix};${copy_java_cmd_secret}"/>
+                </h3>
+                <!-- TODO conceal secret w/ JS if possible -->
+<pre>
+${copy_agent_jar_unix}
+${copy_java_cmd_secret}
+</pre>
+
+                <h3>
+                  ${%slaveAgent.cli.run} (Windows)
+                  <l:copyButton text="${copy_agent_jar_windows} &amp; ${copy_java_cmd_secret}"/>
+                </h3>
+                <!-- TODO conceal secret w/ JS if possible -->
+<pre>
+${copy_agent_jar_windows}
+${copy_java_cmd_secret}
+</pre>
+
+                <j:set var="copy_secret_to_file" value="echo ${it.jnlpMac} &gt; secret-file" />
+                <j:set var="copy_java_cmd_secret2" value="java -jar agent.jar -jnlpUrl ${jenkinsURL}${it.url}jenkins-agent.jnlp -secret @secret-file ${it.launcher.getWorkDirOptions(it)}" />
+                <h3>
+                  ${%slaveAgent.cli.run.secret} (Unix)
+                  <l:copyButton text="${copy_secret_to_file};${copy_agent_jar_unix};${copy_java_cmd_secret2}"/>
+                </h3>
+<pre>
+${copy_secret_to_file}
+${copy_agent_jar_unix}
+${copy_java_cmd_secret2}
+</pre>
+
+                <h3>
+                  ${%slaveAgent.cli.run.secret} (Windows)
+                  <l:copyButton text="${copy_secret_to_file} &amp; ${copy_agent_jar_windows} &amp; ${copy_java_cmd_secret2}"/>
+                </h3>
+<pre>
+${copy_secret_to_file}
+${copy_agent_jar_windows}
+${copy_java_cmd_secret2}
+</pre>
+            </j:otherwise>
+          </j:choose>
+          <p>
+            ${%powerShell.cli.curl}
+          </p>
+      </j:if>
+    </j:when>
+    <j:otherwise>
+      <p>
+        ${%slaveAgent.connected}
+      </p>
+    </j:otherwise>
+  </j:choose>
+</j:jelly>

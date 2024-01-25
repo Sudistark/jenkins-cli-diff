@@ -1,0 +1,14 @@
+#Wed Dec 13 17:01:27 UTC 2023
+releaseTimestamp=\ Date when this plugin was released.\n @since 2.224\n
+wiki=\ Optional URL to the Wiki page that discusses this plugin.\n
+getNeededDependencies=\ Returns a list of dependent plugins which need to be installed or upgraded for this plugin to work.\n
+title=\ Human readable title of the plugin, taken from Wiki page.\n Can be null.\n\n <p>\n beware of XSS vulnerability since this data comes from Wiki\n
+getInstalled=\ If some version of this plugin is currently installed, return {@link PluginWrapper}.\n Otherwise null.\n
+dependencies=\ Dependencies of this plugin, a name -&gt; version mapping.\n
+optionalDependencies=\ Optional dependencies of this plugin.\n
+isCompatible=\ Returns true if the plugin and its dependencies are fully compatible with the current installation\n This is set to restricted for now, since it is only being used by Jenkins UI or Restful API at the moment.\n\n @since 2.175\n
+isCompatibleWithInstalledVersion=\ If the plugin is already installed, and the new version of the plugin has a "compatibleSinceVersion"\n value (i.e., it's only directly compatible with that version or later), this will check to\n see if the installed version is older than the compatible-since version. If it is older, it'll return false.\n If it's not older, or it's not installed, or it's installed but there's no compatibleSinceVersion\n specified, it'll return true.\n
+compatibleSinceVersion=\ Optional version \# from which this plugin release is configuration-compatible.\n
+requiredCore=\ Version of Jenkins core this plugin was compiled against.\n
+categories=\ Categories for grouping plugins, taken from labels assigned to wiki page.\n Can be {@code null} if the update center does not return categories.\n
+excerpt=\ Optional excerpt string.\n

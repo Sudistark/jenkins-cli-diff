@@ -1,0 +1,2 @@
+jenkins.slaves.IOHubProvider
+jenkins.slaves.NioChannelSelector
